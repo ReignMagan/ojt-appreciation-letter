@@ -1,0 +1,78 @@
+:root {
+  color-scheme: light;
+  --ink: #463b30;
+  --muted: #75634e;
+  --gold: #8a6939;
+  --paper: #fffcf5;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f4eddf;
+  background: #101919;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: radial-gradient(ellipse at 50% 440px, #34443b70 0%, transparent 55%), linear-gradient(135deg, #152221, #0d1415 75%); }
+main { max-width: 1000px; margin: auto; padding: 58px 24px 26px; }
+.introduction { text-align: center; animation: arrive 1200ms ease both; }
+.eyebrow { font-size: 10px; letter-spacing: .25em; font-weight: 500; color: #ceb78c; line-height: 1.8; display: flex; align-items: center; justify-content: center; gap: 12px; }
+.eyebrow span { width: 20px; height: 1px; background: currentColor; }
+h1, h2, .envelope-note, .signature-name { font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif; font-weight: 400; }
+h1 { font-size: clamp(43px, 7vw, 76px); line-height: 1.08; letter-spacing: -.045em; margin: 28px 0; }
+h1 em, h2 em { color: var(--gold); font-weight: 400; }
+h1 em { color: #d4bb8d; }
+.dedication { font-size: 12px; color: #aebcb5; line-height: 1.9; margin: 0; }
+.dedication span { color: #eee6d7; font-size: 13px; letter-spacing: .035em; }
+.invitation { display: flex; align-items: center; flex-direction: column; margin: 54px 0 64px; position: relative; animation: arrive 1400ms 150ms ease both; }
+.invitation::before { content: ''; position: absolute; top: -75px; width: min(480px, 100%); height: 330px; border-radius: 50%; pointer-events: none; background: radial-gradient(ellipse, #d5b4781f, transparent 68%); animation: lamplight 5s ease-in-out 2; }
+.envelope { width: min(340px, 100%); height: 210px; position: relative; background: #d4bd96; border-radius: 3px; box-shadow: 0 24px 45px -10px #0009, 0 0 60px -30px #d1ad70; perspective: 1000px; transform: rotate(-4deg); }
+.envelope-address { position: absolute; bottom: 25px; left: 15px; right: 15px; z-index: 3; font-size: 7px; text-align: center; letter-spacing: .18em; color: #715735; }
+.envelope-note { position: absolute; inset: 14px 18px 12px; background: var(--paper); text-align: center; padding-top: 34px; transform: rotate(-3deg); transition: transform 800ms ease; border: 1px solid #ded1b5; }
+.envelope-note span, .envelope-note em { display: block; font-size: 21px; line-height: 1.5; }
+.envelope-note em { font-size: 16px; color: var(--gold); }
+.envelope-front { position: absolute; inset: 0; z-index: 2; background: linear-gradient(32deg, #e7d6b8 49.5%, transparent 50%) bottom left / 51% 100% no-repeat, linear-gradient(-32deg, #e0cba8 49.5%, transparent 50%) bottom right / 51% 100% no-repeat; clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%); background-color: #e4d0ad; border-radius: 3px; }
+.envelope-flap { position: absolute; inset: 0; height: 58%; background: #efdfc3; clip-path: polygon(0 0, 100% 0, 50% 100%); transform-origin: top; z-index: 3; transition: transform 550ms ease, z-index 0s 275ms; }
+.seal { position: absolute; left: calc(50% - 22px); top: 87px; z-index: 4; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 44% 48% 43% 49%; background: #743d35; color: #f4d4ac; border: 4px double #b6775b; box-shadow: 0 3px 8px #4b251d66; font-family: Georgia, serif; font-size: 25px; transition: opacity 200ms, transform 200ms; }
+.is-open .envelope-flap { transform: rotateX(180deg); z-index: 0; }
+.is-open .envelope-note { transform: translateY(-35px) rotate(-3deg); }
+.is-open .seal { opacity: 0; transform: scale(1.15) rotate(12deg); }
+button { position: relative; margin-top: 38px; border: 1px solid #a88d62; border-radius: 2px; background: #d7c29a; color: #252a23; padding: 14px 28px; min-height: 48px; font: inherit; font-size: 12px; letter-spacing: .08em; cursor: pointer; transition: background 200ms, box-shadow 200ms; }
+button span { margin-left: 22px; }
+button:hover { background: #ead8b4; box-shadow: 0 0 26px #d1b17b20; }
+button:disabled { cursor: default; background: transparent; border-color: #677367; color: #c8caba; }
+:focus-visible { outline: 2px solid #c8a263; outline-offset: 6px; }
+.invitation-note { margin: 15px 0 0; font-size: 11px; color: #aebcb5; text-align: center; font-family: Georgia, serif; font-style: italic; }
+.letter { color: var(--ink); max-width: 680px; margin: 0 auto; padding: 42px 54px 24px; background: linear-gradient(90deg, #e3d7c529, transparent 5%), var(--paper); border: 1px solid #e4d9c5; border-top: 4px solid #ae9262; box-shadow: 0 18px 70px #0004; overflow-wrap: break-word; counter-reset: recipients; }
+.letter.revealed { animation: unfold 800ms ease both; }
+.letter-top { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 9px; letter-spacing: .16em; border-bottom: 1px solid #e9dfcd; padding-bottom: 18px; }
+h2 { font-size: clamp(28px, 4vw, 39px); letter-spacing: -.025em; line-height: 1.25; margin: 34px 0; }
+.letter-kicker { color: var(--gold); font-size: 9px !important; letter-spacing: .17em; margin: 32px 0 -16px !important; }
+.letter h3 { font-family: Georgia, serif; font-size: 22px; font-weight: 400; color: #725333; margin: 40px 0 18px; padding-top: 22px; border-top: 1px solid #e9dfcd; line-height: 1.4; }
+.letter h3::before { counter-increment: recipients; content: '0' counter(recipients) ' /'; display: block; color: #8a7350; font-family: system-ui, sans-serif; font-size: 9px; letter-spacing: .15em; margin-bottom: 10px; }
+.letter strong { font-weight: 600; color: #654a2d; }
+.letter .closing { margin-top: 36px; font-style: italic; }
+.letter p { font-size: 15px; line-height: 1.95; margin: 0 0 22px; }
+.letter .salutation { font-weight: 600; font-size: 14px; }
+.signature { margin-top: 36px; }
+.signature p { margin-bottom: 4px; }
+.signature .signature-name { font-style: italic; font-size: 27px; color: var(--gold); line-height: 1.5; }
+.signature .signature-role { font-size: 13px; color: var(--muted); }
+.letter-end { text-align: center; color: var(--gold); margin-top: 28px; }
+.page-footer { margin-top: 46px; text-align: center; font-size: 10px; letter-spacing: .04em; color: #aebcb5; line-height: 1.8; }
+.page-footer span { display: block; font-family: Georgia, serif; font-size: 20px; margin-bottom: 8px; color: #c6ac7d; }
+@keyframes arrive { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes lamplight { 0%, 100% { opacity: .5; transform: scale(.95); } 50% { opacity: 1; transform: scale(1.05); } }
+@keyframes unfold { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 480px) {
+  main { padding: 44px 18px 24px; }
+  .eyebrow { font-size: 9px; letter-spacing: .15em; }
+  .dedication { font-size: 12px; }
+  .invitation { margin-top: 56px; }
+  .envelope { width: 280px; max-width: 100%; height: 180px; }
+  .seal { top: 72px; }
+  .letter { padding: 28px 23px 22px; }
+  .letter p { font-size: 15px; line-height: 1.85; }
+  .letter-top { font-size: 8px; letter-spacing: .1em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
